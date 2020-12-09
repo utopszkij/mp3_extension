@@ -1,0 +1,35 @@
+{
+	"new_version":"1.0.1",
+	"url":"https://github.com/utopszkij/mp3_extension",
+	"package":"https://github.com/utopszkij/mp3_extension/zipball/master/",
+	"info":{
+		"name":"wp3_extension",
+		"author":"<a href='mailto:tibor.fogler@gmail.com'>Fogler Tibor</a>",
+		"author_profile":"https://github.com/utopszkij",
+		"requires":"5.0",
+		"tested":"5.5",
+		"rating":0,
+		"num_ratings":0,
+		"downloaded":0,
+		"last_updated":"2020-12-06",
+		"added":"2020-12-06",
+		"homepage":"https://github.com/utopszkij/mp3_extension",
+		"tags":{
+			"wordpress":"wordpress",
+			"upgrade":"upgrade",
+			"update":"update",
+			"wp":"wp",
+			"repository":"repsitory",
+			"plugins":"plugins",
+			"hacks":"hacks",
+			"trucks":"trucks"
+		},
+		"sections":{
+			"description":"mp3 info managmed in wp admin site",
+			"installation":"As simple as 2 steps: extract in plugins folder, activate in administration panel",
+			"screenshots":"",
+			"changelog":"1.0.1. github auto updater",
+			"faq":""
+		}
+	}
+}
