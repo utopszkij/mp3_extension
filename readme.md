@@ -1,6 +1,8 @@
 # mp3ext_extension wordpress bővítmény
 ## Licensz: GNU/GPL
 
+~Current Version:1.0.1~
+
 A wordpress alapértelmezett media kezelője a feltöltött mp3 fájlokkal kapcsolatban a következő adatokat kezeli:
 
     • Cím
@@ -11,7 +13,7 @@ A wordpress alapértelmezett media kezelője a feltöltött mp3 fájlokkal kapcs
     • Feltöltő
     • Fájl URL
 
-    • Az mp3_extension plugin ezeket az adatokat kiegészíti az mp3 fájlokban lévő további adatokkal:
+### Az mp3_extension plugin ezeket az admin oldalon adatokat kiegészíti az mp3 fájlokban lévő további adatokkal:
 
     • artist   - előadó
     • band   - zenekar
@@ -34,9 +36,11 @@ Az ACF group neve: „mp3-extended”
 
 A plugin az mp3 fájlokban lévő „comments”, „tags[id3v2]”, „tags[idv3v1]”, „fileformat”, „filename”, „filesize”, „playtime” , „mimetype” adatokat dolgozza fel.
 Ha az mp3 fájl redundánsan tartalmazza az adatokat akkor a következő prioritás érvényesül:
+
     1. id3v2
     2. id3v1
     3. comments
+    
 A plugin neve: „mp3-extension” a plugin által használt name prefix:  „mp3ext_”
 
 A plugin a 
@@ -59,19 +63,21 @@ Lásd a fenti web címeken.
 
 
 ## Telepítés
-- Töltsd le a https://github.com/utopszkij/mp3_extenson/archive/master.zip -fájlt
+- A https://github.com/utopszkij/mp3_extension web helyről, a "code" gombra kattintva, najd a "Download zip" linket használva töltsd le a zip fájlt,  
 - A Wordpress plugin telepítővel telepitsd ezt a zip fájlt 
 - Plugin kezelőben kapcsold be a plugint.
 
-## Automatikus frissités
-- kapcsold be a plugin kezelőben!
--
-## Kézi Frissítés
-    • Plugin kezelőben kapcsold ki a plugint, majd távolisd el,
-    • Újra telepítés a friss zip -fájlt használva,
-    • plugin kezelőben bekapcsolás
+## Frissítés
+- A https://github.com/utopszkij/mp3_extension web helyről, a "code" gomra kattintva, majd a "Download zip" linket használva töltsd le a zip fájlt, 
+- A wordpress Plugin kezelőben kapcsold ki a plugint, majd távolisd el,
+- Újra telepítés a friss zip -fájlt használva (lásd fentebb),
       
-Szerző: Fogler Tibor, Sas Tibor
+Ha a github -on újabb verzió jelenik meg mint ami telepítve van akkor a wp admin oldalon figyelmeztető üzenet jelenik meg.      
+      
+Szerző: Fogler Tibor RoBIT Bt
+
+github updater: https://github.com/radishconcepts/WordPress-GitHub-Plugin-Updater felhasználásával készült.
+
 
 github.com/utopszkij
 
