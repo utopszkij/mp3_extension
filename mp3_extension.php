@@ -25,6 +25,7 @@ include_once __DIR__.'/class.mp3_extension.php';
  */
 function activate_mp3_extension() {
 }
+register_activation_hook( __FILE__, 'activate_mp3_extension' );
 
 /**
  * The code that runs during plugin deactivation.
@@ -32,7 +33,6 @@ function activate_mp3_extension() {
  */
 function deactivate_mp3_extension() {
 }
-register_activation_hook( __FILE__, 'activate_mp3_extension' );
 register_deactivation_hook( __FILE__, 'deactivate_mp3_extension' );
 
 
@@ -60,30 +60,23 @@ function mp3ext_init() {
 	}
 	
 	/*
+	 * verzió infók lekérése a github -ról	
 	 * $res empty at this step
 	 * $action 'plugin_information'
 	 * $args stdClass Object ( [slug] => woocommerce [is_ssl] => [fields] => Array ( [banners] => 1 [reviews] => 1 [downloaded] => [active_installs] => 1 ) [per_page] => 24 [locale] => en_US )
 	 */
 	function mp3ext_plugin_info( $res, $action, $args ){
+		global $mp3ext;
 		// do nothing if this is not about getting plugin information
 		if( 'plugin_information' !== $action ) {
 			return false;
 		}
-		$plugin_slug = 'mp3_extension'; // we are going to use it in many places in this function
+		$plugin_slug = $mp3ext->pluginName; 
 		if( $plugin_slug !== $args->slug ) {
 			return false;
 		}
-		if( false == $remote = get_transient( 'mp3ext_' . $plugin_slug ) ) {
-			$remote = wp_remote_get( 'https://raw.githubusercontent.com/utopszkij/mp3_extension/master/newver-info.json', array(
-				'timeout' => 10,
-				'headers' => array(
-					'Accept' => 'application/json'
-				) )
-			);
-			if ( ! is_wp_error( $remote ) && isset( $remote['response']['code'] ) && $remote['response']['code'] == 200 && ! empty( $remote['body'] ) ) {
-				set_transient( 'misha_update_' . $plugin_slug, $remote, 43200 ); // 12 hours cache
-			}
-		}
+		$remote = $mp3ext->getFromGithub();
+		
 		if( ! is_wp_error( $remote ) && isset( $remote['response']['code'] ) && $remote['response']['code'] == 200 && ! empty( $remote['body'] ) ) {
 			$remote = json_decode( $remote['body'] );
 			$res = new stdClass();
@@ -116,32 +109,24 @@ function mp3ext_init() {
 	* plugin auto updater hook
 	*/	
 	function mp3ext_push_update( $transient ){
+		global $mp3ext;
 		if ( empty($transient->checked ) ) {
 	            return $transient;
         }
-		if( false == $remote = get_transient( 'mp3ext_mp3_extension' ) ) {
-			$remote = wp_remote_get( 'https://raw.githubusercontent.com/utopszkij/mp3_extension/master/newver-info.json', array(
-				'timeout' => 10,
-				'headers' => array(
-					'Accept' => 'application/json'
-				) )
-			);
-			if ( !is_wp_error( $remote ) && isset( $remote['response']['code'] ) && $remote['response']['code'] == 200 && !empty( $remote['body'] ) ) {
-				set_transient( 'mp3ext_mp3_extension', $remote, 43200 ); // 12 hours cache
-			}
-		}
+		$remote = $mp3ext->getFromGithub();		
 		if( $remote ) {
 			$remote = json_decode( $remote['body'] );
-			if( $remote && version_compare( '0.0', $remote->new_version, '<' ) && 
+			$actVersion = $mp3ext->getVersionFromFile();
+			if( $remote && version_compare( $actVersion, $remote->new_version, '<' ) && 
 				version_compare($remote->info->requires, get_bloginfo('version'), '<' ) ) {
 				$res = new stdClass();
-				$res->slug = 'mp3_extension';
-				$res->plugin = 'mp3_extension/mp3_extension.php'; // it could be just YOUR_PLUGIN_SLUG.php if your plugin doesn't have its own directory
+				$res->slug = $mp3ext->pluginName;
+				$res->plugin = $mp3ext->pluginName.'/'.$mp3ext->pluginName.'.php'; // it could be just YOUR_PLUGIN_SLUG.php if your plugin doesn't have its own directory
 				$res->new_version = $remote->new_version;
 				$res->tested = $remote->info->tested;
 				$res->package = $remote->package;
-	           		$transient->response[$res->plugin] = $res;
-	           	}
+	           	$transient->response[$res->plugin] = $res;
+	        }
 		}
         return $transient;
 	}
@@ -207,17 +192,7 @@ function mp3ext_admin_init(){
  */
 function mp3ext_admin() {
     global $mp3ext;
- 	//  $mp3ext->admin();
- 	echo '<h2>mp3 extension</h2>
- 	<p>kibővített mp3 info kezelés a wp admin oldalon</p>
- 	<p> </p>
- 	<p><a href="https://github.com/utopszkij/mp3_extension">plugin web oldal</a></p>
- 	<p> </p>
- 	<p>extended mp3 info managment in wp admin site</p>
- 	<p> </p>
- 	<p><a href="https://github.com/utopszkij/mp3_extension">plugin web site</a></p>
- 	<p> </p>
- 	';
+ 	$mp3ext->admin();
 }
 
 ?>

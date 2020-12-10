@@ -7,12 +7,12 @@
 		"author":"<a href='mailto:tibor.fogler@gmail.com'>Fogler Tibor</a>",
 		"author_profile":"https://github.com/utopszkij",
 		"requires":"5.0",
-		"tested":"5.5",
+		"tested":"5.6",
 		"rating":0,
 		"num_ratings":0,
 		"downloaded":0,
-		"last_updated":"2020-12-06",
-		"added":"2020-12-06",
+		"last_updated":"2020-12-10",
+		"added":"2020-12-05",
 		"homepage":"https://github.com/utopszkij/mp3_extension",
 		"tags":{
 			"wordpress":"wordpress",
@@ -26,9 +26,9 @@
 		},
 		"sections":{
 			"description":"mp3 info managmed in wp admin site",
-			"installation":"As simple as 2 steps: extract in plugins folder, activate in administration panel",
+			"installation":"As simple as 2 steps: extract in plugins folder, activate in administration panel,<br /> or use wp plugin installation by this zip file: https://github.com/utopszkij/mp3_extension/zipball/master/",
 			"screenshots":"",
-			"changelog":"1.0.1. github auto updater",
+			"changelog":"2020.12.10. V 1.0.1. include github auto updater<br />",
 			"faq":""
 		}
 	}
