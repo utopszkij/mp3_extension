@@ -1,15 +1,14 @@
 <?php
-/**
-*
-* Plugin Name: mp3_extension
-* Plugin URI: http://www.github.com/utopszkij/mp3_extension
-* Description: Kiegészítés woocommerce -hez, mp3 információk kezelése
-* Version: 0.0.0
-* Author: RoBIT Bt, Fogler Tibor
-* Author URI: http://www.github.com/utopszkij
-*
-* szükséges további plugin: Advanced customer field
-* a plugin létrehoz/használ egy ACF groupt az audo media formátumú post-okhoz rendelve: "mp3_extension"
+/*
+Plugin Name: mp3_extension
+Plugin URI: http://www.github.com/utopszkij/mp3_extension
+Description: Kiegészítés woocommerce -hez, mp3 információk kezelése
+Version: 1.0.0
+Author: RoBIT Bt, Fogler Tibor
+Author URI: http://www.github.com/utopszkij
+
+szükséges további plugin: Advanced customer field
+a plugin létrehoz/használ egy ACF groupt az audo media formátumú post-okhoz rendelve: "mp3_extension"
 */
 
 // If this file is called directly, abort.
@@ -141,49 +140,6 @@ function mp3ext_admin_init(){
 		echo '<h2 style="background-color:red; color:white; font-weight:bold; padding:10px">
 			mp3 extension error! "Advanced Custom fields" Plugin not activated, please activate it!</h2>';	
 	}
-
-	/**
-	* verzió szám kinyerése a fő php forrásfájlból
-	* @param array $lines
-	* @return string
-	*/
-	function getVersionFromFile(array $lines) {
-		$result = '';
-		foreach ($lines as $line) {
-			if (strpos($line,'* Version:') === 0) {
-				$result = trim(str_replace('* Version:','',$line));
-				if (substr($result,1,1) == '.') {
-					$result = ' '.$result;			
-				}
-			}		
-		}
-		return $result;
-	}
-	
-	// a legfrissebb verzió lekérése a github -ról
-	$w = file_get_contents('https://raw.githubusercontent.com/utopszkij/mp3_extension/master/mp3_extension.php');
-	$lines = explode("\n",$w);
-	$new_version = getVersionFromFile($lines);	
-
-	// telepített verzió elérése
-	$lines = file(__FILE__);
-	$act_version = getVersionFromFile($lines);	
-		
-	// ha van új verzió akkor figyelmeztető üzenet
-	if ($new_version > $act_version) {
-		echo '<div style="background-color:orange; color:black; padding:10px;">
-		mp3_extension plugin új verzió érhető el!<br>
-		Elérhető verzió:'.$new_version.'<br />
-		Telepített verzió:'.$act_version.'<br />
-		<a href="https://github.com/utopszkij/mp3_extension">Frissitési utmutató</a>
-		<br />
-		mp3_extension plugin new version is exists!<br>
-		New version:'.$new_version.'<br />
-		Actual version:'.$act_version.'<br />
-		<a href="https://github.com/utopszkij/mp3_extension">upgrade info</a>
-		</div>
-		';			
-	}	
 
 }
 
