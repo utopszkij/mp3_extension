@@ -112,10 +112,11 @@ function mp3ext_init() {
 		if ( empty($transient->checked ) ) {
 	            return $transient;
         }
-		$remote = $mp3ext->getFromGithub();		
+		$remote = $mp3ext->getFromGithub();
 		if( $remote ) {
 			$remote = json_decode( $remote['body'] );
-			$actVersion = $mp3ext->getVersionFromFile();
+			$pluginData = get_plugin_data( __FILE__ );
+			$actVersion = $pluginData['Version'];			
 			if( $remote && version_compare( $actVersion, $remote->new_version, '<' ) && 
 				version_compare($remote->info->requires, get_bloginfo('version'), '<' ) ) {
 				$res = new stdClass();

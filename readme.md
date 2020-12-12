@@ -1,7 +1,8 @@
 # mp3ext_extension wordpress bővítmény
-## Licensz: GNU/GPL
 
-~Current Version:1.0.1~
+Current Version:1.0.0
+
+## Licensz: GNU/GPL
 
 A wordpress alapértelmezett media kezelője a feltöltött mp3 fájlokkal kapcsolatban a következő adatokat kezeli:
 
@@ -62,18 +63,24 @@ Lásd a fenti web címeken.
 - advanced-custom-fields plugin
 
 
-## Telepítés
+## Telepítés a WP plugin telepítővel
 - A https://github.com/utopszkij/mp3_extension web helyről, a "code" gombra kattintva, najd a "Download zip" linket használva töltsd le a zip fájlt,  
 - A Wordpress plugin telepítővel telepitsd ezt a zip fájlt 
 - Plugin kezelőben kapcsold be a plugint.
 
-## Frissítés
+## Kézi telepítés
+- hozz létre a wp-conetent/plugin könyvtárba egy új mp3_extension nevü könyvtárat
+- ebbe másold be a repo tartalmát
+- Plugin kezelőben kapcsold be a plugint.
+
+## Automatikus frissités
+- kapcsold be a WP admin felületen, a plugin automatikus frissitési lehetőségét
+
+## Kézi Frissítés
 - A https://github.com/utopszkij/mp3_extension web helyről, a "code" gomra kattintva, majd a "Download zip" linket használva töltsd le a zip fájlt, 
 - A wordpress Plugin kezelőben kapcsold ki a plugint, majd távolisd el,
 - Újra telepítés a friss zip -fájlt használva (lásd fentebb),
-      
-Ha a github -on újabb verzió jelenik meg mint ami telepítve van akkor a wp admin oldalon figyelmeztető üzenet jelenik meg.      
-      
+     
 Szerző: Fogler Tibor RoBIT Bt
 
 github updater: https://github.com/radishconcepts/WordPress-GitHub-Plugin-Updater felhasználásával készült.
