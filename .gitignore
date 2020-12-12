@@ -2,6 +2,7 @@
 tests/sonar.sh
 .htaccess
 .config.php
+.gitignore
 eles-config.php
 /node_modules/
 /vendor/
