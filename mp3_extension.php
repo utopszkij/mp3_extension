@@ -42,14 +42,13 @@ add_action('init','mp3ext_init');
 function mp3ext_init() {
     global $mp3ext;
     $mp3ext = new Mp3ExtController();
-
-	add_action('admin_menu', 'mp3ext_plugin_create_menu');
-	function mp3ext_plugin_create_menu() {
-	    add_options_page("mp3 extension WordPress bővítmény", "mp3ext wordPress bővítmény", 1,
-	        "mp3ext_admin", "mp3ext_admin");
-	} 
 	
-	add_action( 'edit_form_top', 'mp3ext_1',1,1 );
+	// set plugin setup
+	function mp3ext_register_options_page() {
+	  add_options_page('mp3_extension', 'mp3 extended info', 'manage_options', 'mp3_extension', 'mp3ext_admin');
+	}
+	add_action('admin_menu', 'mp3ext_register_options_page');	
+	
 	function mp3ext_1($post) {
 		global $mp3ext;
 		if (($post->post_type == 'attachment') & ($post->post_mime_type == 'audio/mpeg')) {
@@ -57,6 +56,7 @@ function mp3ext_init() {
 			$mp3ext->process($post->ID, $filePath);
 		}	
 	}
+	add_action( 'edit_form_top', 'mp3ext_1',1,1 );
 	
 	/*
 	 * verzió infók lekérése a github -ról	

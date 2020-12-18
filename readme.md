@@ -71,7 +71,8 @@ Lásd a fenti web címeken.
 ## Kézi telepítés
 - hozz létre a wp-conetent/plugin könyvtárba egy új mp3_extension nevü könyvtárat
 - ebbe másold be a repo tartalmát
-- Plugin kezelőben kapcsold be a plugint.
+- állitsd be a könyvtár és a fájlok tulajdonosát, jogosultságait, olyanra, hogy a web szerver/php irni, olvasni és törölni is tudja.
+- A WP plugin kezelőben kapcsold be a plugint.
 
 ## Automatikus frissités
 - kapcsold be a WP admin felületen, a plugin automatikus frissitési lehetőségét
@@ -84,6 +85,16 @@ Lásd a fenti web címeken.
 Szerző: Fogler Tibor RoBIT Bt
 
 github updater: https://github.com/radishconcepts/WordPress-GitHub-Plugin-Updater felhasználásával készült.
+
+## Támogatás 
+
+(bankkártyás fizetés vagy PayPal):
+
+[https://paypal.me/pools/c/8v6Qd60h3E](https://paypal.me/pools/c/8v6Qd60h3E)
+
+
+
+
 
 
 github.com/utopszkij
