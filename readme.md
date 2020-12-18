@@ -100,3 +100,6 @@ github updater: https://github.com/radishconcepts/WordPress-GitHub-Plugin-Update
 github.com/utopszkij
 
 tibor.fogler@gmail.com
+
+-. -
+
